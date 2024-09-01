@@ -12,7 +12,7 @@ import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 const router=createBrowserRouter([
   {
     path:'/',
-    element:<Language/>,
+    element:<Login/>,
   },{
         path:'',
         element:<Language/>
