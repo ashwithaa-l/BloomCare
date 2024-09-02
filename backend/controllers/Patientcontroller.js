@@ -9,7 +9,7 @@ const login = async (req, res) => {
         if (!username || !password) {
             return res.status(400).json({ message: "All fields are required" });
         }
-        const doc = await Patient.findOne({ username: username });
+        const doc = await Patient.findOne({ username });
         if (!doc) {
             return res.status(400).json({ message: "User does not exist" });
         }
@@ -34,7 +34,7 @@ const signup = async (req, res) => {
         if (!username || !email || !password) {
             return res.status(400).json({ message: "All fields are required" });
         }
-        const user = await Patient.findOne({ $or: [{ username }, { email }] });
+        const user = await Patient.findOne({username});
         if (user) {
             return res.status(400).json({ message: "Username or email already exists" });
         }

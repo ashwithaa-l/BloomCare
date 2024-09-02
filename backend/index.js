@@ -3,6 +3,8 @@ const express=require('express')
 const bodyParser=require('body-parser')
 const cors=require('cors')
 const app = express()
+const patientRoutes = require('./routes/PatientRoutes')
+
 app.use(cors())
 app.use(bodyParser.json())
 async function connecttodb(){
@@ -18,5 +20,7 @@ async function connecttodb(){
     console.log('couldn\'t connect to')
 }
 }
+
+app.use('/patient',patientRoutes);
 
 connecttodb()
