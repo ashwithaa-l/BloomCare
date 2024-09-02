@@ -7,9 +7,9 @@ function Home() {
     }
   return (
     <>
-    <div className="bg-[url('./home.png')] h-screen bg-cover mt-[20rem]flex-col">
-     <div className='pt-[20rem] pl-[20rem]'>
-    <p className='text-8xl  font-bold mb-[4rem]'>WELCOME TO  BLOOM CARE</p>
+    <div className="bg-[url('./home.png')] h-screen bg-cover flex-col">
+     <div className='flex items-center justify-center flex-col'>
+    <p className='text-8xl font-bold pt-[2rem]'>WELCOME TO  BLOOM CARE</p>
     <p className='relative text-5xl font-semibold ml-[25rem] mb-[5rem]'>GET YOURSELF CURED</p>
     <p className='text-7xl font-bold ml-[15rem] mb-[10rem]'>HOW CAN I HELP YOU</p>
     </div>
