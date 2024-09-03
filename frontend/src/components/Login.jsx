@@ -26,7 +26,7 @@ function Login() {
         console.log(res.data);
         document.cookie = `token=${res.data.message.token}`;
         toast.success('Login Successful');
-        navigate('/Home');
+        navigate('/Esanjeevini');
       } else {
         toast.error('Login Failed');
       }

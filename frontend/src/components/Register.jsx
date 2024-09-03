@@ -23,7 +23,7 @@ const handleSignup = async () => {
           console.log(res.data);
           document.cookie = `token=${res.data.message.token}`;
           toast.success('Registered Successful');
-          navigate('/Home');
+          navigate('/Esanjeevini');
       } else {
           toast.error('Signup Failed');
       }
