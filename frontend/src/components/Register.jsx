@@ -1,5 +1,5 @@
 
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
@@ -8,6 +8,14 @@ function Register() {
   const [username,setUsername]=useState('');
   const [password,setPassword]=useState('');
 const navigate=useNavigate();
+
+useEffect(()=>{
+  const token = document.cookie.split('=')[0];
+  if(token){
+    navigate('/')
+  }
+},[navigate])
+
 const handleSignup = async () => {
   if (!username || !password ) {
       return toast.error('Please fill in all fields');

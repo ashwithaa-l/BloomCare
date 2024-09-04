@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
@@ -10,6 +10,13 @@ function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    const token = document.cookie.split('=')[0];
+    if(token){
+      navigate('/')
+    }
+  },[navigate])
 
   const handleLogin = async (e) => {
     e.preventDefault();
