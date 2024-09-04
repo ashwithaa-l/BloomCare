@@ -9,26 +9,32 @@ import Register from './components/Register.jsx'
 // import DoctorPage from './components/DoctorPage.jsx'
 import Esanjeevini from './components/Esanjeevini.jsx'
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'
+import App from './App.jsx'
 
 const router=createBrowserRouter([
-  {
-    path:'/',
-    element:<Login/>,
-  },{
-        path:'',
+      {
+        path:'/login',
         element:<Login/>
       },
       {
-        path:'/Register',
+        path:'/register',
         element:<Register/>
-      },{
-        path:'/Login',
-        element:<Login/>
-      },{
-        path:'/esanjeevini',
-        element:<Esanjeevini/>
+      },
+      {
+        path:'/',
+        element:<App></App>,
+        children:[
+          {
+            path:'/',
+            element:<Esanjeevini/>
+          },
+          {
+            path:'/esanjeevini',
+            element:<Esanjeevini/>
+          }
+        ]
       }
-]
+    ]
 )
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

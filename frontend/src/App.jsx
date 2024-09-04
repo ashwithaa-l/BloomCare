@@ -1,11 +1,20 @@
 
-import React from 'react';
-import Language from "./components/Language.jsx"
-import Home from "./components/Home.jsx"
-import Login from "./components/Login.jsx"
-import Register from "./components/Register.jsx"
-function App() {
 
+import { useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
+function App() {
+  const navigate = useNavigate()
+
+  useEffect(()=>{
+    const token = document.cookie.split('=')[0];
+    if(token){
+      navigate('/')
+    }
+    else{
+      navigate('/login')
+    }
+  },[navigate])
+  
   return (
     <>
      <Outlet/>
@@ -13,4 +22,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
