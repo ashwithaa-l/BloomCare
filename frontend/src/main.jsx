@@ -10,10 +10,7 @@ import DoctorPage from './components/DoctorPage.jsx'
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 
 const router=createBrowserRouter([
-  {
-    path:'/',
-    element:<Login/>,
-  },{
+ {
         path:'',
         element:<Language/>
       },

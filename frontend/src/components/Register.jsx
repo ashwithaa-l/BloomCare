@@ -13,7 +13,7 @@ const handleSignup = async () => {
       return toast.error('Please fill in all fields');
   }
   try {
-      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}Patient/Register`, {
+      const res = await axios.post(`${import.meta.env.VITE_BASE_URL}patient/signup`, {
           username,
           password,
           email
