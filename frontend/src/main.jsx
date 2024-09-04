@@ -11,17 +11,15 @@ import Esanjeevini from './components/Esanjeevini.jsx'
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 
 const router=createBrowserRouter([
- {
-        path:'',
+      {
+        path:'/login',
         element:<Login/>
       },
       {
-        path:'/Register',
+        path:'/register',
         element:<Register/>
-      },{
-        path:'/Login',
-        element:<Login/>
-      },{
+      },
+      {
         path:'/esanjeevini',
         element:<Esanjeevini/>
       }

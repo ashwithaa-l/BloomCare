@@ -3,27 +3,26 @@ import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
+import { TbScanEye } from 'react-icons/tb';
 function Register() {
   const [username,setUsername]=useState('');
-  const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
 const navigate=useNavigate();
 const handleSignup = async () => {
-  if (!username || !password ||!email) {
+  if (!username || !password ) {
       return toast.error('Please fill in all fields');
   }
   try {
       const res = await axios.post(`${import.meta.env.VITE_BASE_URL}patient/signup`, {
           username,
           password,
-          email
       });
 
       if (res.status === 201) {
           console.log(res.data);
           document.cookie = `token=${res.data.message.token}`;
           toast.success('Registered Successful');
-          navigate('/Home');
+          navigate('/esanjeevini');
       } else {
           toast.error('Signup Failed');
       }
@@ -32,34 +31,48 @@ const handleSignup = async () => {
       console.error(err.message);
   }
 };
+
 const handleRegisterClick=()=>{
     navigate('/Login')
 }
 
   return (
     <>
-    <div className='bg-[url("register.png")] h-screen bg-cover'>
-      <div className='pt-[10rem]'>  
-        <p className='font-bold text-8xl ml-[55rem] mb-[3rem]'>Register</p>
-        <p className='font-semibold text-3xl ml-[52rem]'>Register if don’t have an account </p>
-        </div>
-        <form className='flex flex-col mt-[10rem] ml-[40rem]'>
-           <div className='mb-[4rem]'> 
-            <label className='text-5xl mr-[2rem] font-semibold'>Username:</label>
-           <input onChange={(e)=>setUsername(e.target.value)} type='text' placeholder='Enter your name' className=' shadow-lg py-[1rem] text-3xl w-[33.5rem] rounded-[0.5rem]'></input></div>
-            <div>
-            <label className='text-5xl mr-[8rem] font-semibold '>Email:</label>
-            <input onChange={(e) => setEmail(e.target.value)} type='email' placeholder='Enter your email' className=' shadow-lg py-[1rem] text-3xl mb-[4rem] w-[33.5rem] rounded-[0.5rem]'></input></div>
-            <div>
-            <label className='text-5xl font-semibold mr-[3rem]'>Password:</label>
-            <input onChange={(e) => setPassword(e.target.value)} type='password' placeholder='Enter your password' className=' shadow-lg py-[1rem] text-3xl mb-[6rem] w-[33.5rem] rounded-[0.5rem]'></input></div>
-        </form>
-        <button onClick={(e)=>handleSignup()} className='text-3xl font-bold border border-black px-[3rem] py-[1rem] bg-black rounded-[3rem] ml-[55rem] text-white mb-[5rem]'>Register</button>
-        <p className=' mb-[3rem] ml-[59rem] text-3xl font-semibold'>or</p>
-       <div className='ml-[56rem] mb-[4rem]'><button className='text-blue border border-gray-500 rounded-[4rem] p-[0.5rem] text-4xl text-blue-300 bg-white'>Webcam</button></div>
-       <div className='flex flex-row gap-[3rem] ml-[40rem]'>
-        <p className='mt-[1rem] text-3xl font-semibold'>IF YOU HAVE AN ACCOUNT</p>
-        <button onClick={handleRegisterClick} className='border border-black px-[3rem] py-[1rem] rounded-[3rem] bg-black text-white text-3xl'>Login</button>
+    <div className='bg-[url("register.png")] h-[100vh] bg-cover font-bold'>
+    <div className='h-[100vh]  lg:w-[59%] w-full'>
+           <div className='flex items-center justify-center h-full'>
+              <div className='w-[38rem] h-[44rem] flex flex-col items-center text-center'>
+                  <span className='text-[4rem] mb-1'>Register</span>
+                  <span className='text-blue-900'>Get your account created here in a simpler way</span>
+                  <div className='flex flex-col mt-[4rem]'>
+                  <div className='flex gap-x-[2rem] items-center justify-center'>
+                      <span className='text-3xl text-blue-900 font-bold'>Username  :</span>
+                      <input
+                        type='text'
+                        placeholder='Enter your Username'
+                        className='p-[1rem] rounded-xl'
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}/>
+                  </div>
+                  <div className='flex mt-[4rem] p-[1rem] gap-x-[2rem] items-center justify-center'>
+                      <span className='text-3xl text-blue-900 font-bold'>Password  :</span>
+                      <input
+                        type='password'
+                        placeholder='Enter your password'
+                        className='p-[1rem] rounded-xl'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}/>
+                  </div>
+                  </div>
+                  <button type='submit' onClick={handleSignup} className='text-3xl font-bold border border-black px-[3rem] py-[1rem] bg-black rounded-[3rem] text-white mt-[4rem]'>Register</button>
+                  <hr className='h-[0.2rem]  w-[70%] mt-[2rem]'></hr>
+                  <div className='flex flex-col items-center justify-center gap-y-[1rem] mt-[1rem]'>
+                        <TbScanEye className='text-6xl text-blue-900'></TbScanEye>
+                        <span className='text-blue-900'>Add Face</span>
+                  </div>
+                  <span className='mt-4'>Have an account ? <span className='text-blue-800  cursor-pointer ' onClick={()=>handleRegisterClick()}>Login</span></span>
+              </div>
+           </div>
         </div>
     </div>
     <Toaster/>

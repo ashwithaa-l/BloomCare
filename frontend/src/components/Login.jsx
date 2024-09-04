@@ -19,7 +19,6 @@ function Login() {
     try {
       const res = await axios.post(`${import.meta.env.VITE_BASE_URL}patient/login`, {
         username,
-        email,
         password
       });
 
@@ -27,7 +26,7 @@ function Login() {
         console.log(res.data);
         document.cookie = `token=${res.data.message.token}`
         toast.success('Login Successful');
-        navigate('/Home');
+        navigate('/esanjeevini');
       } else {
         toast.error('Login Failed');
       }
@@ -74,8 +73,8 @@ function Login() {
                   <div className='flex flex-col items-center justify-center gap-y-[1rem] mt-[1rem]'>
                         <TbScanEye className='text-6xl text-blue-900'></TbScanEye>
                         <span className='text-blue-900'>Scan Face</span>
-                  </div>
-                  <span className='mt-3'>Dont have an account ? <span className='text-blue-900 cursor-pointer' onClick={()=>handleRegisterClick()}>Register</span></span>
+                  </div>                  <span className='mt-2'>Dont have an account ? <span className='  cursor-pointer text-blue-900' onClick={()=>handleRegisterClick()}>Register</span></span>
+
               </div>
            </div>
         </div>
