@@ -8,6 +8,7 @@ import Register from './components/Register.jsx'
 // import ChatBot from './components/ChatBot.jsx'
 // import DoctorPage from './components/DoctorPage.jsx'
 import Esanjeevini from './components/Esanjeevini.jsx'
+import Printer from './components/Printer.jsx'
 import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 import App from './App.jsx'
 
@@ -31,6 +32,9 @@ const router=createBrowserRouter([
           {
             path:'/esanjeevini',
             element:<Esanjeevini/>
+          },{
+            path:'/printer',
+            element:<Printer/>
           }
         ]
       }
