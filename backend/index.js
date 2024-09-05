@@ -7,6 +7,10 @@ const patientRoutes = require('./routes/PatientRoutes')
 
 app.use(cors())
 app.use(bodyParser.json())
+app.use(express.json());
+const dotenv = require('dotenv');
+dotenv.config({ path: './.env' });
+
 async function connecttodb(){
     try{
         await mongoose.connect(`${process.env.MONGO_URI}`)
@@ -21,7 +25,7 @@ async function connecttodb(){
 }
 }
 
-app.get('/',()=>{
+app.get('/',(req,res)=>{
     res.send('Hello world');
 });
 
