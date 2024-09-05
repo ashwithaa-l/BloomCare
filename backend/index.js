@@ -21,6 +21,10 @@ async function connecttodb(){
 }
 }
 
+app.get('/',()=>{
+    res.send('Hello world');
+};
+
 app.use('/patient',patientRoutes);
 
 connecttodb()
