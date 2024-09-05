@@ -17,7 +17,7 @@ const login = async (req, res) => {
         if (!isValid) {
             return res.status(400).json({ message: "Invalid credentials" });
         }
-        const token = await generateToken(doc.username, doc.email);
+        const token = await generateToken(doc.username);
         console.log(token);
         return res.status(200).json({ error: false, message: { token: token } });
     } catch (err) {
@@ -29,9 +29,8 @@ const login = async (req, res) => {
 const signup = async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
-    const email = req.body.email;
     try {
-        if (!username || !email || !password) {
+        if (!username || !password) {
             return res.status(400).json({ message: "All fields are required" });
         }
         const user = await Patient.findOne({username});
@@ -41,11 +40,10 @@ const signup = async (req, res) => {
         const hashPassword = await bcrypt.hash(password, 10);
         const newUser = new Patient({
             username,
-            email,
             password: hashPassword
         });
         await newUser.save();
-        const token = await generateToken(newUser.username, newUser.email);
+        const token = await generateToken(newUser.username);
         return res.status(201).json({ error: false, message: { token: token } });
     } catch (err) {
         console.error('User creation failed:', err);

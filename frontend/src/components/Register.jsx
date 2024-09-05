@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import { TbScanEye } from 'react-icons/tb';
+import register from './assets/register.png'
 function Register() {
   const [username,setUsername]=useState('');
   const [password,setPassword]=useState('');
