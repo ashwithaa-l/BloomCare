@@ -48,7 +48,7 @@ const signup = async (req, res) => {
         return res.status(201).json({ error: false, message: { token: token } });
     } catch (err) {
         console.error('User creation failed:', err);
-        return res.status(500).json({ message: "User creation failed, please try again later" });
+        return res.status(500).json({ message: "User creation failed, please try again later",error:err });
     }
 };
 const getUser = async (req, res) => {
