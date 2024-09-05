@@ -25,9 +25,10 @@ async function connecttodb(){
 }
 }
 
-app.get('/',(req,res)=>{
-    res.send('Hello world');
-});
+app.get('/',(req, res)=>{
+    res.status(200).json("hello world")
+})
+
 
 app.use('/patient',patientRoutes);
 
