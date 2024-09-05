@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { TbScanEye } from "react-icons/tb";
-
+import loginbg from '../assets/login.png';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -49,7 +49,9 @@ function Login() {
 
   return (
     <>
-      <div className='bg-[url("login.png")] h-[100vh] bg-cover font-bold'>
+      <div className=' h-[100vh] bg-cover font-bold' 
+            style={{ backgroundImage: `url(${loginbg})` }}
+>
         <div className='h-[100vh]  lg:w-[59%] w-full'>
            <div className='flex items-center justify-center h-full'>
               <div className='w-[38rem] h-[44rem] flex flex-col items-center text-center'>
