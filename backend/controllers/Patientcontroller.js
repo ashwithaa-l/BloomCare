@@ -29,6 +29,7 @@ const login = async (req, res) => {
 const signup = async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
+    // const email = req.body.email;
     try {
         if (!username || !password) {
             return res.status(400).json({ message: "All fields are required" });

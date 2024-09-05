@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
 import { TbScanEye } from 'react-icons/tb';
-import register from './assets/register.png'
+import registerbg from "../assets/register.png";
+
 function Register() {
   const [username,setUsername]=useState('');
   const [password,setPassword]=useState('');
@@ -47,8 +48,9 @@ const handleRegisterClick=()=>{
 
   return (
     <>
-    <div className='bg-[url("register.png")] h-[100vh] bg-cover font-bold'>
-    <div className='h-[100vh]  lg:w-[59%] w-full'>
+    <div className=' h-[100vh] bg-cover font-bold'
+    style={{ backgroundImage: `url(${registerbg})`}}>
+    <div className='h-[100vh] lg:w-[59%] w-full'>
            <div className='flex items-center justify-center h-full'>
               <div className='w-[38rem] h-[44rem] flex flex-col items-center text-center'>
                   <span className='text-[4rem] mb-1'>Register</span>
@@ -79,7 +81,7 @@ const handleRegisterClick=()=>{
                         <TbScanEye className='text-6xl text-blue-900'></TbScanEye>
                         <span className='text-blue-900'>Add Face</span>
                   </div>
-                  <span className='mt-4'>Have an account ? <span className='text-blue-800  cursor-pointer ' onClick={()=>handleRegisterClick()}>Login</span></span>
+                  <span className='mt-2'>Have an account ? <span className='text-blue-800  cursor-pointer ' onClick={()=>handleRegisterClick()}>Login</span></span>
               </div>
            </div>
         </div>

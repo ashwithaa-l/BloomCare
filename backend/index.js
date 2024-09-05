@@ -9,7 +9,7 @@ app.use(cors())
 app.use(bodyParser.json())
 async function connecttodb(){
     try{
-        await mongoose.connect(`${process.env.MONGODB_URL}`)
+        await mongoose.connect(`${process.env.MONGO_URI}`)
         console.log('db connected')
     
     app.listen(7000,function(){
@@ -20,6 +20,10 @@ async function connecttodb(){
     console.log('couldn\'t connect to')
 }
 }
+
+app.get('/',()=>{
+    res.send('Hello world');
+});
 
 app.use('/patient',patientRoutes);
 
